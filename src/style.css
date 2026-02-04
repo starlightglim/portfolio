@@ -417,7 +417,7 @@ img {
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
-  transform: translate(-50%, -50%);
+  will-change: transform;
   transition: width 0.15s, height 0.15s, border-width 0.15s;
   margin: 0;
 }

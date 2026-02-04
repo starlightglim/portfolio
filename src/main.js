@@ -25,13 +25,12 @@ let currentX = 0, currentY = 0
 document.addEventListener('mousemove', (e) => {
   cursorX = e.clientX
   cursorY = e.clientY
-})
+}, { passive: true })
 
 function animateCursor() {
   currentX += (cursorX - currentX) * 0.15
   currentY += (cursorY - currentY) * 0.15
-  cursor.style.left = currentX + 'px'
-  cursor.style.top = currentY + 'px'
+  cursor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`
   requestAnimationFrame(animateCursor)
 }
 animateCursor()
