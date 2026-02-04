@@ -14,35 +14,27 @@ window.addEventListener('scroll', () => {
   }, 1000)
 }, { passive: true })
 
-// Custom cursor
-const cursor = document.createElement('div')
-cursor.className = 'cursor'
-document.body.appendChild(cursor)
+// Custom cursor (desktop only)
+const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches
 
-let cursorX = 0, cursorY = 0
-let currentX = 0, currentY = 0
+if (!isTouchDevice) {
+  const cursor = document.createElement('div')
+  cursor.className = 'cursor'
+  document.body.appendChild(cursor)
 
-document.addEventListener('mousemove', (e) => {
-  cursorX = e.clientX
-  cursorY = e.clientY
-}, { passive: true })
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
+  }, { passive: true })
 
-function animateCursor() {
-  currentX += (cursorX - currentX) * 0.15
-  currentY += (cursorY - currentY) * 0.15
-  cursor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`
-  requestAnimationFrame(animateCursor)
+  // Hover state for clickable elements
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.matches('a, button, summary, [role="button"], .color-swatch')) {
+      cursor.classList.add('hover')
+    }
+  })
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.matches('a, button, summary, [role="button"], .color-swatch')) {
+      cursor.classList.remove('hover')
+    }
+  })
 }
-animateCursor()
-
-// Hover state for clickable elements
-document.addEventListener('mouseover', (e) => {
-  if (e.target.matches('a, button, summary, [role="button"], .color-swatch')) {
-    cursor.classList.add('hover')
-  }
-})
-document.addEventListener('mouseout', (e) => {
-  if (e.target.matches('a, button, summary, [role="button"], .color-swatch')) {
-    cursor.classList.remove('hover')
-  }
-})

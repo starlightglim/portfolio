@@ -244,14 +244,50 @@ const handleMagmaLeave = () => {
   font-size: 0.875rem;
   margin-top: calc(var(--line-height) / 2);
 }
+
+@media screen and (max-width: 600px) {
+  .job-header {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .job-header strong {
+    font-size: 0.9rem;
+  }
+
+  .date {
+    font-size: 0.8rem;
+  }
+
+  .job pre {
+    font-size: 0.75rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .tech {
+    font-size: 0.7rem;
+  }
+
+  .toggle {
+    font-size: 0.8rem;
+  }
+}
 </style>
 
 <style>
 .preview-video {
   position: fixed;
   width: 280px;
+  max-width: 40vw;
   pointer-events: none;
   z-index: 1000;
   border: 2px solid var(--text-color, #fff);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .preview-video {
+    display: none !important;
+  }
 }
 </style>

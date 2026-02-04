@@ -102,12 +102,53 @@ body {
   overflow-x: hidden;
 }
 
+/* Tablet */
+@media screen and (max-width: 768px) {
+  body {
+    padding: var(--line-height) 1.5ch;
+  }
+
+  figure {
+    margin: var(--line-height) 1ch;
+  }
+}
+
+/* Mobile */
 @media screen and (max-width: 480px) {
   :root {
     font-size: 14px;
   }
+
   body {
     padding: var(--line-height) 1ch;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    line-height: calc(1.5 * var(--line-height));
+  }
+
+  figure {
+    margin: var(--line-height) 0;
+  }
+
+  pre {
+    font-size: 0.8rem;
+  }
+
+  details {
+    padding: calc(var(--line-height) - var(--border-thickness)) 0.5ch;
+  }
+}
+
+/* Touch devices - disable custom cursor */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+
+  .cursor {
+    display: none !important;
   }
 }
 
@@ -413,13 +454,14 @@ img {
   left: 0;
   width: 12px;
   height: 12px;
+  margin-left: -6px;
+  margin-top: -6px;
   border: 1.5px solid var(--text-color);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
   will-change: transform;
-  transition: width 0.15s, height 0.15s, border-width 0.15s;
-  margin: 0;
+  transition: width 0.15s, height 0.15s, margin 0.15s, border-width 0.15s;
 }
 
 .cursor::after {
@@ -438,6 +480,8 @@ img {
 .cursor.hover {
   width: 20px;
   height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
   border-width: 2px;
 }
 

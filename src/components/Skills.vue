@@ -44,4 +44,12 @@ pre {
   color: var(--text-color);
   font-weight: var(--font-weight-bold);
 }
+
+@media screen and (max-width: 600px) {
+  pre {
+    font-size: 0.8rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
 </style>

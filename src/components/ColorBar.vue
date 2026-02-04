@@ -1,3 +1,27 @@
+<template>
+  <div class="theme-controls" :class="{ open: isOpen }">
+    <!-- Mobile toggle button -->
+    <button class="toggle-btn" @click="isOpen = !isOpen">
+      <span>{{ isDark ? '◐' : '◑' }}</span>
+      <span class="arrow">{{ isOpen ? '▲' : '▼' }}</span>
+    </button>
+    <!-- Desktop: inline row / Mobile: dropdown -->
+    <div class="dropdown">
+      <button class="dark-toggle" @click="toggleDark">{{ isDark ? '◐' : '◑' }}</button>
+      <button class="dark-btn" @click="toggleDark">{{ isDark ? 'Light' : 'Dark' }}</button>
+      <div class="colors">
+        <button
+          v-for="(color, i) in colors"
+          :key="color.name"
+          :class="['dot', { active: activeColor === i }]"
+          :style="{ background: isDark ? color.dark : color.light }"
+          @click="selectColor(i)"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -14,6 +38,7 @@ const colors = [
 
 const isDark = ref(false)
 const activeColor = ref(0)
+const isOpen = ref(false)
 let scrollbarStyle = null
 
 function hexToRgb(hex) {
@@ -67,35 +92,47 @@ onMounted(() => {
 })
 </script>
 
-<template>
-  <div class="theme-controls">
-    <button class="dark-toggle" @click="toggleDark">{{ isDark ? '◐' : '◑' }}</button>
-    <button
-      v-for="(color, i) in colors"
-      :key="color.name"
-      :class="['dot', { active: activeColor === i }]"
-      :style="{ background: isDark ? color.dark : color.light }"
-      @click="selectColor(i)"
-    />
-  </div>
-</template>
-
 <style scoped>
 .theme-controls {
   position: fixed;
   top: 10px;
   right: 10px;
+  z-index: 9999;
+  margin: 0;
+}
+
+.toggle-btn {
+  display: none;
+}
+
+.dropdown {
   display: flex;
   gap: 6px;
   align-items: center;
-  z-index: 9999;
-  margin: 0;
   opacity: 0.3;
   transition: opacity 0.2s;
 }
 
-.theme-controls:hover {
+.dropdown:hover {
   opacity: 1;
+}
+
+.dark-btn {
+  display: none;
+}
+
+.colors {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.colors::before {
+  content: '';
+  display: block;
+  font-size: 14px;
+  color: var(--text-color);
+  margin-right: 4px;
 }
 
 .dark-toggle {
@@ -103,8 +140,7 @@ onMounted(() => {
   border: none;
   font-size: 14px;
   padding: 0;
-  margin: 0;
-  margin-right: 4px;
+  margin-right: 6px;
   color: var(--text-color);
   line-height: 1;
 }
@@ -115,7 +151,6 @@ onMounted(() => {
   border-radius: 50%;
   border: none;
   padding: 0;
-  margin: 0;
   transition: transform 0.15s;
 }
 
@@ -126,5 +161,80 @@ onMounted(() => {
 .dot.active {
   outline: 1.5px solid var(--text-color);
   outline-offset: 2px;
+}
+
+/* Mobile dropdown */
+@media screen and (max-width: 600px) {
+  .theme-controls {
+    top: 8px;
+    right: 8px;
+  }
+
+  .toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--background-color);
+    border: 1.5px solid var(--text-color);
+    padding: 6px 10px;
+    font-size: 14px;
+    color: var(--text-color);
+  }
+
+  .arrow {
+    font-size: 10px;
+  }
+
+  .dropdown {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--background-color);
+    border: 1.5px solid var(--text-color);
+    border-top: none;
+    padding: 10px;
+    opacity: 1;
+  }
+
+  .theme-controls.open .dropdown {
+    display: flex;
+  }
+
+  .dark-toggle {
+    display: none;
+  }
+
+  .dark-btn {
+    display: block;
+    background: none;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 6px 12px;
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .colors {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .colors::before {
+    display: none;
+  }
+
+  .dot {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dot:hover {
+    transform: none;
+  }
+
+  .dot.active {
+    outline-width: 2px;
+  }
 }
 </style>

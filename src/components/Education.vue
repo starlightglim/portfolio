@@ -70,4 +70,29 @@ const expanded = ref(false)
 .toggle:hover {
   color: var(--text-color);
 }
+
+@media screen and (max-width: 600px) {
+  .edu-header {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .edu-header strong {
+    font-size: 0.9rem;
+  }
+
+  .date {
+    font-size: 0.8rem;
+  }
+
+  .edu pre {
+    font-size: 0.8rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .toggle {
+    font-size: 0.8rem;
+  }
+}
 </style>
