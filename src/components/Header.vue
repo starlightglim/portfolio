@@ -34,11 +34,11 @@ const currentDate = new Date().toISOString().split('T')[0]
   </div>
 
   <nav class="nav">
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#fun">For Fun</a>
+    <a href="#about">About</a> ·
+    <a href="#education">Education</a> ·
+    <a href="#experience">Experience</a> ·
+    <a href="#skills">Skills</a> ·
+    <a href="#fun">For Fun</a> ·
     <a href="#contact">Contact</a>
   </nav>
 </template>

@@ -26,7 +26,6 @@
 import { ref, onMounted } from 'vue'
 
 const colors = [
-  { name: 'mono', light: '#000', dark: '#fff' },
   { name: 'red', light: '#a00', dark: '#f66' },
   { name: 'orange', light: '#b50', dark: '#fa3' },
   { name: 'green', light: '#070', dark: '#5d5' },
@@ -86,7 +85,7 @@ onMounted(() => {
   if (saved) {
     const { dark, color } = JSON.parse(saved)
     isDark.value = dark
-    activeColor.value = color
+    activeColor.value = color < colors.length ? color : 0
   }
   applyTheme()
 })
@@ -107,10 +106,14 @@ onMounted(() => {
 
 .dropdown {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   align-items: center;
   opacity: 0.3;
   transition: opacity 0.2s;
+}
+
+.dropdown * {
+  margin-top: 0;
 }
 
 .dropdown:hover {
@@ -127,20 +130,11 @@ onMounted(() => {
   align-items: center;
 }
 
-.colors::before {
-  content: '';
-  display: block;
-  font-size: 14px;
-  color: var(--text-color);
-  margin-right: 4px;
-}
-
 .dark-toggle {
   background: none;
   border: none;
   font-size: 14px;
   padding: 0;
-  margin-right: 6px;
   color: var(--text-color);
   line-height: 1;
 }
@@ -151,6 +145,8 @@ onMounted(() => {
   border-radius: 50%;
   border: none;
   padding: 0;
+  margin: 0;
+  vertical-align: middle;
   transition: transform 0.15s;
 }
 

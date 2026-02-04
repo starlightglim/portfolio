@@ -70,8 +70,7 @@ const handleMagmaLeave = () => {
 <span class="hl">├── React Three Fiber 3D landing page</span>
 <span class="hl">├── Mobile-first responsive trading experience</span>
 <span class="hl">├── Solana wallet integration and gasless flows</span>
-<span class="hl">├── Gamification layer</span>
-<span class="hl">└── Precision bug fixes</span></pre>
+<span class="hl">└── Gamification layer</span></pre>
       <pre v-else><span class="hl">├── WebGL trading charts at 60fps, $1B+ volume, 300k+ transactions</span>
 <span class="dim">│   └── Built real-time rendering pipeline processing live crypto
 │       price feeds with sub-second latency at scale</span>
@@ -93,12 +92,9 @@ const handleMagmaLeave = () => {
 <span class="hl">├── Solana wallet integration and gasless flows</span>
 <span class="dim">│   └── Implemented session management, transaction signing, and
 │       built deposit/withdrawal stepper to reduce drop-off</span>
-<span class="hl">├── Gamification layer</span>
-<span class="dim">│   └── Created win/loss animations, added sound feedback, and
-│       built shareable PnL cards for social virality</span>
-<span class="hl">└── Precision bug fixes</span>
-<span class="dim">    └── Debugged and fixed floating-point errors in price parsing
-        that were causing transaction failures on-chain</span></pre>
+<span class="hl">└── Gamification layer</span>
+<span class="dim">    └── Created win/loss animations, added sound feedback, and
+        built shareable PnL cards for social virality</span></pre>
       <a class="toggle" @click.prevent="expanded.rush = !expanded.rush">
         {{ expanded.rush ? '[-] collapse' : '[+] expand' }}
       </a>
@@ -130,7 +126,6 @@ const handleMagmaLeave = () => {
       </div>
       <pre v-if="!expanded.magma"><span class="hl">├── Vault dashboard for DeFi protocol, $5M+ TVL</span>
 <span class="hl">├── HyperEVM chain adaptation</span>
-<span class="hl">├── WebGL 3D landing page</span>
 <span class="hl">├── Real-time portfolio tracking with P&amp;L</span>
 <span class="hl">├── Precision bug fix in withdrawal flow</span>
 <span class="hl">├── Themeable component system</span>
@@ -141,9 +136,6 @@ const handleMagmaLeave = () => {
 <span class="hl">├── HyperEVM chain adaptation</span>
 <span class="dim">│   └── Led migration from Cosmos-based chains to EVM networks,
 │       integrated wallets and smart contract interactions</span>
-<span class="hl">├── WebGL 3D landing page</span>
-<span class="dim">│   └── Designed and developed interactive 3D visualizations to
-│       boost engagement and differentiate the brand</span>
 <span class="hl">├── Real-time portfolio tracking with P&amp;L</span>
 <span class="dim">│   └── Built tracking system showing positions, deposits, and
 │       unrealized P&amp;L with per-asset granularity</span>
