@@ -10,7 +10,7 @@
         </tr>
         <tr>
           <th class="width-min">GitHub</th>
-          <td><a href="https://github.com/starlightglim">github.com/starlightglim91</a></td>
+          <td><a href="https://github.com/starlightglim">github.com/starlightglim</a></td>
         </tr>
       </tbody>
     </table>
