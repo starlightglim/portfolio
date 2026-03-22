@@ -53,6 +53,41 @@ const handleMagmaLeave = () => {
   <section id="experience">
     <h2>Experience</h2>
 
+        <div class="job">
+      <div class="job-header">
+        <strong>EternalOS — Creator &amp; Developer</strong>
+        <span class="date">2026</span>
+      </div>
+      <pre v-if="!expanded.eternalos"><span class="hl">├── Browser-based desktop environment with retro UI</span>
+<span class="hl">├── AI chat agent grounded in real desktop state</span>
+<span class="hl">├── Image enrichment with captions, tags, and OCR</span>
+<span class="hl">├── Per-user custom CSS and appearance system</span>
+<span class="hl">├── Cloudflare-native auth, storage, and edge architecture</span>
+<span class="hl">└── Live at <a href="https://eternalos.app" target="_blank">eternalos.app</a></span></pre>
+      <pre v-else><span class="hl">├── Browser-based desktop environment with retro UI</span>
+<span class="dim">│   └── Draggable icons, resizable windows, folder browsing,
+│       and file viewers for images, text, audio, video, and PDFs</span>
+<span class="hl">├── AI chat agent grounded in real desktop state</span>
+<span class="dim">│   └── Built "Ask Eternal" using Cloudflare Agents with structured
+│       tools for search, overview, and approval-based mutations</span>
+<span class="hl">├── Image enrichment with captions, tags, and OCR</span>
+<span class="dim">│   └── Async Workers AI pipeline extracts captions, tags, text,
+│       and dominant colors on upload for searchable metadata</span>
+<span class="hl">├── Per-user custom CSS and appearance system</span>
+<span class="dim">│   └── Full theming with color controls, wallpaper, border radius,
+│       shadows, and a live custom CSS editor with history</span>
+<span class="hl">├── Cloudflare-native auth, storage, and edge architecture</span>
+<span class="dim">│   └── JWT auth via Workers, Durable Objects for per-user state,
+│       KV for session indexing, R2 for file storage</span>
+<span class="hl">└── Live at <a href="https://eternalos.app" target="_blank">eternalos.app</a></span>
+<span class="dim">    └── Public visitor view, real-time desktop sharing,
+        and snapshot caching at the edge</span></pre>
+      <a class="toggle" @click.prevent="expanded.eternalos = !expanded.eternalos">
+        {{ expanded.eternalos ? '[-] collapse' : '[+] expand' }}
+      </a>
+      <p class="tech">React · TypeScript · Cloudflare Workers · Durable Objects · Workers AI · R2 · KV · Zustand</p>
+    </div>
+
     <div
       class="job"
       @mouseenter="handleRushEnter"
