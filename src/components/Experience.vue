@@ -79,7 +79,7 @@ const handleMagmaLeave = () => {
 <span class="hl">├── Cloudflare-native auth, storage, and edge architecture</span>
 <span class="dim">│   └── JWT auth via Workers, Durable Objects for per-user state,
 │       KV for session indexing, R2 for file storage</span>
-<span class="hl">└── Live at <a href="https://eternalos.app" target="_blank">eternalos.app</a></span>
+<span class="hl">└── Live at <a href="https://eternalos.me" target="_blank">eternalos.me</a></span>
 <span class="dim">    └── Public visitor view, real-time desktop sharing,
         and snapshot caching at the edge</span></pre>
       <a class="toggle" @click.prevent="expanded.eternalos = !expanded.eternalos">
