@@ -3,13 +3,16 @@ import { ref } from 'vue'
 
 const expanded = ref({
   rush: false,
-  magma: false
+  magma: false,
+  eternalos: false
 })
 
 const showRushVideo = ref(false)
 const showMagmaVideo = ref(false)
+const showEternalosVideo = ref(false)
 const rushVideo = ref(null)
 const magmaVideo = ref(null)
+const eternalosVideo = ref(null)
 const mousePos = ref({ x: 0, y: 0 })
 
 const handleMouseMove = (e) => {
@@ -47,13 +50,34 @@ const handleMagmaLeave = () => {
     magmaVideo.value.currentTime = 0
   }
 }
+
+const handleEternalosEnter = () => {
+  showEternalosVideo.value = true
+  if (eternalosVideo.value) {
+    eternalosVideo.value.playbackRate = 3
+    eternalosVideo.value.play()
+  }
+}
+
+const handleEternalosLeave = () => {
+  showEternalosVideo.value = false
+  if (eternalosVideo.value) {
+    eternalosVideo.value.pause()
+    eternalosVideo.value.currentTime = 0
+  }
+}
 </script>
 
 <template>
   <section id="experience">
     <h2>Experience</h2>
 
-        <div class="job">
+        <div
+      class="job"
+      @mouseenter="handleEternalosEnter"
+      @mouseleave="handleEternalosLeave"
+      @mousemove="handleMouseMove"
+    >
       <div class="job-header">
         <strong>EternalOS — Creator &amp; Developer</strong>
         <span class="date">2026</span>
@@ -86,6 +110,19 @@ const handleMagmaLeave = () => {
         {{ expanded.eternalos ? '[-] collapse' : '[+] expand' }}
       </a>
       <p class="tech">React · TypeScript · Cloudflare Workers · Durable Objects · Workers AI · R2 · KV · Zustand</p>
+
+      <Teleport to="body">
+        <video
+          v-show="showEternalosVideo"
+          ref="eternalosVideo"
+          class="preview-video"
+          :style="{ left: mousePos.x + 20 + 'px', top: mousePos.y + 20 + 'px' }"
+          src="/eternalos.mov"
+          muted
+          loop
+          playsinline
+        />
+      </Teleport>
     </div>
 
     <div

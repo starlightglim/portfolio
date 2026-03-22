@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/jetbrains-mono-2');
+
 /**
  * Based on The Monospace Web by Oskar Wickström
  * https://github.com/owickstrom/the-monospace-web
@@ -40,8 +42,6 @@ table {
 }
 
 /* MAIN STYLES */
-@import url('https://fonts.cdnfonts.com/css/jetbrains-mono-2');
-
 :root {
   --font-family: "JetBrains Mono", monospace;
   --line-height: 1.20rem;
